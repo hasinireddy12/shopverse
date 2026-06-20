@@ -48,11 +48,7 @@ function Profile() {
             {user.phone}
           </p>
 
-          <p>
-            <strong>Role:</strong>
-            {" "}
-            {user.role}
-          </p>
+          {/* Role removed from profile view for privacy */}
 
         </div>
 
