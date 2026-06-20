@@ -100,7 +100,8 @@ const getOrderById = async (req, res) => {
 module.exports = {
   placeOrder,
   getMyOrders,
-  getOrderById
+  getOrderById,
+  getAllOrders
 };
 
 // Get All Orders (admin)
