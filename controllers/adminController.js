@@ -46,6 +46,12 @@ const updateOrderStatus = async (req, res) => {
       }
     );
 
+    if (!order) {
+      return res.status(404).json({
+        message: "Order not found"
+      });
+    }
+
     res.status(200).json(order);
 
   } catch (error) {
@@ -59,9 +65,15 @@ const updateOrderStatus = async (req, res) => {
 const deleteProduct = async (req, res) => {
   try {
 
-    await Product.findByIdAndDelete(
+    const product = await Product.findByIdAndDelete(
       req.params.id
     );
+
+    if (!product) {
+      return res.status(404).json({
+        message: "Product not found"
+      });
+    }
 
     res.status(200).json({
       message: "Product Deleted"

@@ -29,6 +29,12 @@ const orderSchema = new mongoose.Schema({
     default:"Pending"
   }
 
+  ,
+  paid:{
+    type:Boolean,
+    default:false
+  }
+
 },
 {
   timestamps:true
