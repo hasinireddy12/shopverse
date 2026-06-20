@@ -24,9 +24,18 @@
   text-align: left;
 }
 
+/* Make text readable over the dark visual panel */
+.auth-visual,
+.auth-visual h1,
+.auth-visual p,
+.auth-visual .eyebrow {
+  color: rgba(255,255,255,0.92);
+}
+
 .auth-visual h1 {
   font-size: clamp(2.2rem, 3.5vw, 3.8rem);
   margin: 10px 0 14px;
+  color: rgba(255,255,255,0.98);
 }
 
 .auth-visual p {
@@ -43,9 +52,9 @@
 .auth-point {
   padding: 14px 16px;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border);
-  color: var(--text-h);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.94);
   font-weight: 700;
 }
 
