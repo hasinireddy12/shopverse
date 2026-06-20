@@ -47,7 +47,7 @@ a, a:visited {
   border-radius: 999px;
   background: rgba(45, 212, 191, 0.12);
   border: 1px solid rgba(45, 212, 191, 0.28);
-  color: var(--accent-2);
+  color: var(--text-h);
   text-transform: uppercase;
   letter-spacing: 0.16em;
   font-size: 0.73rem;
