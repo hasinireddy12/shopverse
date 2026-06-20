@@ -1,0 +1,23 @@
+.footer {
+  margin-top: auto;
+  padding: 28px 20px;
+  background:
+    linear-gradient(180deg, rgba(7, 17, 31, 0.4), rgba(7, 17, 31, 0.96));
+  border-top: 1px solid var(--border);
+}
+
+.footer .container {
+  max-width: 980px;
+}
+
+.footer h5 {
+  color: var(--text-h);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  margin-bottom: 12px;
+}
+
+.footer p {
+  color: var(--text);
+  margin-bottom: 8px;
+}

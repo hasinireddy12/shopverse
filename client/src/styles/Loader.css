@@ -1,0 +1,33 @@
+.loader-container{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  min-height:60vh;
+}
+
+.loader{
+  width:60px;
+  height:60px;
+
+  border:6px solid #EDE9FE;
+  border-top:6px solid #6C63FF;
+
+  border-radius:50%;
+
+  animation:spin 1s linear infinite;
+}
+
+.loader-container h4{
+  margin-top:20px;
+  color:#6C63FF;
+}
+
+@keyframes spin{
+  from{
+    transform:rotate(0deg);
+  }
+  to{
+    transform:rotate(360deg);
+  }
+}

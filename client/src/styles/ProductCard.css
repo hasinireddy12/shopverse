@@ -1,0 +1,107 @@
+.product-card {
+  height: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(18, 31, 53, 0.96), rgba(12, 22, 39, 0.96));
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(45, 212, 191, 0.36);
+  box-shadow: 0 22px 48px rgba(5, 10, 18, 0.26);
+}
+
+.product-media {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.03);
+}
+
+.product-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(7, 17, 31, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-h);
+  font-size: 0.78rem;
+  font-weight: 700;
+  backdrop-filter: blur(12px);
+}
+
+.product-body {
+  padding: 20px;
+  text-align: left;
+}
+
+.product-kicker {
+  margin-bottom: 8px;
+  color: var(--accent-2);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.product-card h5 {
+  margin-bottom: 8px;
+  color: var(--text-h);
+  font-size: 1.08rem;
+  min-height: 52px;
+}
+
+.product-description {
+  min-height: 46px;
+  color: var(--text);
+  font-size: 0.94rem;
+}
+
+.product-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.price {
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: var(--accent-3);
+}
+
+.stock-chip {
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(45, 212, 191, 0.12);
+  border: 1px solid rgba(45, 212, 191, 0.18);
+  color: #a8fff1;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.shop-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 16px;
+  background: linear-gradient(135deg, #ff8a5b, #f5c66a);
+  color: #10131a;
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-weight: 800;
+  box-shadow: 0 14px 28px rgba(255, 138, 91, 0.22);
+}
