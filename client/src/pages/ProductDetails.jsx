@@ -43,6 +43,11 @@ function ProductDetails() {
         return;
       }
 
+      if (user.role === "admin") {
+        alert("Admins are not allowed to add items to cart");
+        return;
+      }
+
       await api.post(
         "/cart/add",
         {
@@ -122,12 +127,25 @@ function ProductDetails() {
 
           <p className="muted-text">Discount: {product.discount}%</p>
 
-          <button
-            className="btn btn-primary action-button mt-3"
-            onClick={addToCart}
-          >
-            Add To Cart
-          </button>
+          {(() => {
+            const user = JSON.parse(localStorage.getItem("user"));
+            if (user && user.role === "admin") {
+              return (
+                <button className="btn btn-primary action-button mt-3" disabled>
+                  Admins cannot add to cart
+                </button>
+              );
+            }
+
+            return (
+              <button
+                className="btn btn-primary action-button mt-3"
+                onClick={addToCart}
+              >
+                Add To Cart
+              </button>
+            );
+          })()}
 
         </div>
 

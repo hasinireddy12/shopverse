@@ -19,6 +19,16 @@ function Checkout() {
           localStorage.getItem("user")
         );
 
+      if (!user) {
+        alert("Please login first");
+        return;
+      }
+
+      if (user.role === "admin") {
+        alert("Admins are not allowed to place orders");
+        return;
+      }
+
       const cartRes =
         await api.get(
           `/cart/${user._id}`
