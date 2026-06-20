@@ -102,3 +102,19 @@ module.exports = {
   getMyOrders,
   getOrderById
 };
+
+// Get All Orders (admin)
+const getAllOrders = async (req, res) => {
+  try {
+    const orders = await Order.find({})
+      .populate("products.productId")
+      .populate("userId", "name email");
+
+    res.status(200).json(orders);
+
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    });
+  }
+};

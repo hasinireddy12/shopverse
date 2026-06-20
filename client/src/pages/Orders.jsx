@@ -16,10 +16,13 @@ function Orders() {
 
       try {
 
-        const res =
-          await api.get(
-            `/orders/user/${user._id}`
-          );
+        let res;
+        if (user?.role === "admin") {
+          // Admin: fetch all orders
+          res = await api.get(`/orders`);
+        } else {
+          res = await api.get(`/orders/user/${user._id}`);
+        }
 
         setOrders(res.data);
 
@@ -89,6 +92,12 @@ function Orders() {
               <p className="muted-text">
                 Address: {order.address}
               </p>
+
+              {user?.role === 'admin' && order.userId && (
+                <p className="muted-text">
+                  Customer: {order.userId.name} — {order.userId.email}
+                </p>
+              )}
 
             </div>
 
