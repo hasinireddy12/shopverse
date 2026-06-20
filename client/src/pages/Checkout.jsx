@@ -1,6 +1,14 @@
 import { useState } from "react";
 import api from "../services/api";
 
+const getStoredUser = () => {
+  try {
+    return JSON.parse(localStorage.getItem("user"));
+  } catch (e) {
+    return null;
+  }
+};
+
 function Checkout() {
 
   const [address,setAddress] =
@@ -14,10 +22,7 @@ function Checkout() {
 
     try {
 
-      const user =
-        JSON.parse(
-          localStorage.getItem("user")
-        );
+      const user = getStoredUser();
 
       if (!user) {
         alert("Please login first");
@@ -50,7 +55,6 @@ function Checkout() {
       await api.post(
         "/orders",
         {
-          userId: user._id,
           products: cart.products,
           address,
           paymentMethod,
@@ -131,12 +135,20 @@ function Checkout() {
 
           </select>
 
-          <button
-            className="btn btn-success w-100 action-button"
-            onClick={placeOrder}
-          >
-            Place Order
-          </button>
+          {
+            getStoredUser() ? (
+              <button
+                className="btn btn-success w-100 action-button"
+                onClick={placeOrder}
+              >
+                Place Order
+              </button>
+            ) : (
+              <button className="btn btn-secondary w-100" disabled>
+                Please login to place order
+              </button>
+            )
+          }
 
         </div>
 

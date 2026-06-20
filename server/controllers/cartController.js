@@ -3,8 +3,12 @@ const Cart = require("../models/Cart");
 // Add Product To Cart
 const addToCart = async (req, res) => {
   try {
-    // Prefer authenticated user id from token; fall back to body.userId
-    const userId = (req.user && req.user.id) || req.body.userId;
+    // Require authenticated user id from token
+    if (!req.user || !req.user.id) {
+      return res.status(401).json({ message: "Authentication required" });
+    }
+
+    const userId = req.user.id;
     const { productId, quantity } = req.body;
 
     // Block admin users from adding to cart
