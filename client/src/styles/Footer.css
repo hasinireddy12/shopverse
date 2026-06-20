@@ -1,8 +1,7 @@
 .footer {
   margin-top: auto;
   padding: 28px 20px;
-  background:
-    linear-gradient(180deg, rgba(7, 17, 31, 0.4), rgba(7, 17, 31, 0.96));
+  background: linear-gradient(180deg, var(--bg-alt), var(--bg));
   border-top: 1px solid var(--border);
 }
 
