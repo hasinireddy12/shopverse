@@ -1,0 +1,102 @@
+### Test Server
+GET http://localhost:8000
+
+###
+
+### Test User Routes
+GET http://localhost:8000/api/users/test
+
+###
+
+### Register User
+POST http://localhost:8000/api/users/register
+Content-Type: application/json
+
+{
+  "name": "Bhavya",
+  "email": "bhavya@gmail.com",
+  "password": "123456",
+  "phone": "9876543210"
+}
+
+###
+
+### Login User
+POST http://localhost:8000/api/users/login
+Content-Type: application/json
+
+{
+  "email": "bhavya@gmail.com",
+  "password": "123456"
+}
+
+###Add Product
+POST http://localhost:8000/api/products
+Content-Type: application/json
+
+{
+  "title": "iPhone 15",
+  "description": "Apple Smartphone",
+  "price": 80000,
+  "category": "Mobiles",
+  "stock": 10
+}
+
+### Get All Products
+GET http://localhost:8000/api/products
+
+###Add to Cart
+POST http://localhost:8000/api/cart/add
+Content-Type: application/json
+
+{
+  "userId":"6a3638949757bbbdbbda1d5d",
+  "productId":"6a3640b00b674cf2b8fc4b39",
+  "quantity":1
+}
+
+###View Cart
+GET http://localhost:8000/api/cart/6a3638949757bbbdbbda1d5d
+
+### Remove from Cart
+DELETE http://localhost:8000/api/cart/6a3640b00b674cf2b8fc4b39
+
+### Place Order
+POST http://localhost:8000/api/orders
+Content-Type: application/json
+
+{
+  "userId":"USER_ID",
+  "products":[
+    {
+      "productId":"PRODUCT_ID",
+      "quantity":2
+    }
+  ],
+  "address":"Hyderabad, Telangana",
+  "paymentMethod":"Cash On Delivery",
+  "totalAmount":160000
+}
+
+### Get User Orders
+GET http://localhost:8000/api/orders/user/USER_ID
+
+###Get single order
+GET http://localhost:8000/api/orders/ORDER_ID
+
+###Get all users (Admin)
+GET http://localhost:8000/api/admin/users
+
+###Get all orders (Admin)
+GET http://localhost:8000/api/admin/orders
+
+### Update Order Status (Admin)
+PUT http://localhost:8000/api/admin/orders/ORDER_ID
+Content-Type: application/json
+
+{
+  "status":"Shipped"
+}
+
+### Delete Product (Admin)
+DELETE http://localhost:8000/api/admin/products/PRODUCT_ID
