@@ -46,9 +46,11 @@ function Navbar() {
           {
             user && (
               <>
-                <Link to="/cart">
-                  Cart
-                </Link>
+                {user.role !== "admin" && (
+                  <Link to="/cart">
+                    Cart
+                  </Link>
+                )}
 
                 <Link to="/orders">
                   Orders
