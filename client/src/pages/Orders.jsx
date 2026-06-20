@@ -71,9 +71,14 @@ function Orders() {
                   Order ID: {order._id}
                 </h5>
 
-                <span className="status-pill">
-                  {order.status}
-                </span>
+                <div style={{display: 'flex', gap: 8, alignItems: 'center'}}>
+                  <span className="status-pill">
+                    {order.status}
+                  </span>
+                  <span className="status-pill" style={{background: order.paid ? '#198754' : '#6c757d'}}>
+                    {order.paid ? 'Paid' : 'Not Paid'}
+                  </span>
+                </div>
 
               </div>
 

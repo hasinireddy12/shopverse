@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import api from "../services/api";
 
@@ -7,6 +7,8 @@ import ProductCard from "../components/ProductCard";
 function Products() {
 
   const [products, setProducts] = useState([]);
+  const [sortOption, setSortOption] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const fetchProducts = useCallback(async () => {
 
@@ -25,6 +27,27 @@ function Products() {
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);
+
+  const categories = useMemo(() => {
+    const set = new Set(products.map(p => p.category).filter(Boolean));
+    return ["All", ...Array.from(set)];
+  }, [products]);
+
+  const visibleProducts = useMemo(() => {
+    let list = products.slice();
+
+    if (selectedCategory && selectedCategory !== "All") {
+      list = list.filter(p => p.category === selectedCategory);
+    }
+
+    if (sortOption === "price_desc") {
+      list.sort((a, b) => b.price - a.price);
+    } else if (sortOption === "price_asc") {
+      list.sort((a, b) => a.price - b.price);
+    }
+
+    return list;
+  }, [products, sortOption, selectedCategory]);
 
   return (
     <div className="page-shell">
@@ -45,10 +68,26 @@ function Products() {
 
       </header>
 
+      <div className="mb-3 d-flex gap-2 align-items-center">
+        <label className="muted-text">Category:</label>
+        <select className="form-control" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+          {categories.map(cat => (
+            <option key={cat} value={cat}>{cat}</option>
+          ))}
+        </select>
+
+        <label className="muted-text">Sort:</label>
+        <select className="form-control" value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+          <option value="">Default</option>
+          <option value="price_desc">Price: High to Low</option>
+          <option value="price_asc">Price: Low to High</option>
+        </select>
+      </div>
+
       <div className="row g-4">
 
         {
-          products.map((product) => (
+          visibleProducts.map((product) => (
 
             <div
               className="col-md-3 mb-4"
