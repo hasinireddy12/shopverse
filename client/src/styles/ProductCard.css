@@ -9,9 +9,9 @@
 }
 
 .product-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px) scale(1.01);
   border-color: var(--accent-border);
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.08);
 }
 
 .product-media {
@@ -19,12 +19,20 @@
   overflow: hidden;
 }
 
+.product-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(214,199,255,0.02));
+  pointer-events: none;
+}
+
 .product-img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
-  filter: saturate(1.03);
+  filter: saturate(1.02) contrast(0.98);
 }
 
 .product-badge {
@@ -79,7 +87,7 @@
 .price {
   font-weight: 900;
   font-size: 1.2rem;
-  color: var(--accent-3);
+  color: var(--text-h);
 }
 
 .stock-chip {

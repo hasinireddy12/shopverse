@@ -9,13 +9,15 @@
   --text-h: #0f172a; /* deep heading */
   --border: rgba(15, 23, 42, 0.06);
   --code-bg: rgba(243, 244, 246, 0.6);
-  --accent: #c7b8ff; /* lavender */
-  --accent-2: #b8f3d4; /* mint */
-  --accent-3: #ffd6b5; /* peach */
+  --accent: #d6c7ff; /* subtle lavender */
+  --accent-2: #cff7e6; /* soft mint */
+  --accent-3: #ffe8d1; /* soft peach */
+  --accent-soft: rgba(214, 199, 255, 0.12);
   --accent-bg: rgba(199, 184, 255, 0.18);
   --accent-border: rgba(199, 184, 255, 0.36);
   --social-bg: rgba(250, 240, 255, 0.6);
-  --shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  --glass: rgba(255,255,255,0.6);
   --sans: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --heading: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --mono: ui-monospace, SFMono-Regular, Consolas, monospace;
