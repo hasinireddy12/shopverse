@@ -5,6 +5,30 @@
   padding: 40px 20px 56px;
 }
 
+/* Ensure readable text colors across the site */
+body,
+.page-shell,
+.surface-card,
+.list-card,
+.product-body,
+.detail-panel,
+.summary-panel,
+.admin-panel,
+.profile-card {
+  color: var(--text);
+}
+
+h1, h2, h3, h4, h5, h6,
+.page-header__title,
+.product-card h5,
+.metric-card strong {
+  color: var(--text-h);
+}
+
+a, a:visited {
+  color: var(--text-h);
+}
+
 .page-header {
   display: flex;
   flex-direction: column;
