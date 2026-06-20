@@ -8,10 +8,12 @@ const {
   getOrderById
 } = require("../controllers/orderController");
 
-router.post("/", placeOrder);
+const protect = require("../middleware/authMiddleware");
 
-router.get("/user/:userId", getMyOrders);
+router.post("/", protect, placeOrder);
 
-router.get("/:id", getOrderById);
+router.get("/user/:userId", protect, getMyOrders);
+
+router.get("/:id", protect, getOrderById);
 
 module.exports = router;

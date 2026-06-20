@@ -8,12 +8,15 @@ const {
   removeFromCart
 } = require("../controllers/cartController");
 
-router.post("/add", addToCart);
+const protect = require("../middleware/authMiddleware");
 
-router.get("/:userId", getCart);
+router.post("/add", protect, addToCart);
+
+router.get("/:userId", protect, getCart);
 
 router.delete(
   "/:userId/:productId",
+  protect,
   removeFromCart
 );
 

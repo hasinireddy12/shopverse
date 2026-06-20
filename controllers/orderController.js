@@ -4,22 +4,39 @@ const Cart = require("../models/Cart");
 // Place Order
 const placeOrder = async (req, res) => {
   try {
+    // Prefer authenticated user id from token; fall back to body.userId
+    const userId = (req.user && req.user.id) || req.body.userId;
     const {
-      userId,
       products,
       address,
       paymentMethod,
       totalAmount
     } = req.body;
 
-    const order = await Order.create({
+    // Prevent admin users from placing orders
+    if (req.user && req.user.role === "admin") {
+      return res.status(403).json({ message: "Admins are not allowed to place orders" });
+    }
+
+    // Determine payment and status based on selected payment method
+    const orderData = {
       userId,
       products,
       address,
       paymentMethod,
-      totalAmount,
-      status: "Pending"
-    });
+      totalAmount
+    };
+
+    if (paymentMethod === "COD") {
+      orderData.paid = false;
+      orderData.status = "Processing";
+    } else {
+      // For this demo we simulate successful online payments
+      orderData.paid = true;
+      orderData.status = "Processing";
+    }
+
+    const order = await Order.create(orderData);
 
     // Clear cart after order
     await Cart.findOneAndDelete({ userId });
