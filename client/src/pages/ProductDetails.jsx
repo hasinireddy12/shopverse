@@ -113,7 +113,14 @@ function ProductDetails() {
 
           <div className="price-row my-4">
 
-            <h3 className="mb-0">₹ {product.price}</h3>
+            {product && product.discount > 0 ? (
+              <div className="price-block">
+                <h3 className="mb-0">₹ {Math.round(product.price * (1 - product.discount / 100))}</h3>
+                <span className="original-price muted-text">₹ {product.price}</span>
+              </div>
+            ) : (
+              <h3 className="mb-0">₹ {product.price}</h3>
+            )}
 
             <span className="chip">
               In stock

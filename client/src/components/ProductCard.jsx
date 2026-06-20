@@ -28,21 +28,30 @@ function ProductCard({ product }) {
 
         <h5>{product.title}</h5>
 
-        <p className="product-description">
-          {product.description}
-        </p>
+            <p className="product-description">
+              {product.description}
+            </p>
 
-        <div className="product-meta">
+            <div className="product-meta">
 
-          <p className="price">
-            ₹ {product.price}
-          </p>
+              {product && product.discount > 0 ? (
+                <div className="price-block">
+                  <span className="price discounted">
+                    ₹ {Math.round(product.price * (1 - product.discount / 100))}
+                  </span>
+                  <span className="original-price">
+                    ₹ {product.price}
+                  </span>
+                </div>
+              ) : (
+                <p className="price">₹ {product.price}</p>
+              )}
 
-          <span className="stock-chip">
-            Ready to ship
-          </span>
+              <span className="stock-chip">
+                Ready to ship
+              </span>
 
-        </div>
+            </div>
 
         <Link
           to={`/product/${product._id}`}

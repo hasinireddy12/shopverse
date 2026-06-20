@@ -90,6 +90,24 @@
   color: var(--text-h);
 }
 
+.price-block {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.price-block .discounted {
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: var(--accent-3);
+}
+
+.original-price {
+  font-size: 0.95rem;
+  color: rgba(71,85,105,0.6);
+  text-decoration: line-through;
+}
+
 .stock-chip {
   padding: 7px 11px;
   border-radius: 999px;
