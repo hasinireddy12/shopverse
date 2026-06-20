@@ -57,31 +57,31 @@ function Login() {
         <div className="auth-visual">
 
           <span className="eyebrow">
-            Welcome back
+            Welcome back to ShopVerse
           </span>
 
           <h1>
-            Sign in for a faster, cleaner shopping experience.
+            Sign in to continue shopping
           </h1>
 
           <p>
-            Pick up where you left off, track your orders, and keep your cart ready with a smoother account flow.
+            Access your account to view orders, manage your cart, and checkout faster.
           </p>
 
           <div className="auth-points">
-            <div className="auth-point">Curated product access</div>
-            <div className="auth-point">Quick order review</div>
-            <div className="auth-point">Secure dashboard access</div>
+            <div className="auth-point">Exclusive deals</div>
+            <div className="auth-point">Order tracking</div>
+            <div className="auth-point">Saved carts</div>
           </div>
 
         </div>
 
         <div className="auth-card">
 
-          <h2>Login</h2>
+          <h2>Sign in</h2>
 
           <p className="auth-subtitle">
-            Use your account to continue shopping.
+            Enter your email and password to access your account.
           </p>
 
           <form onSubmit={handleSubmit} className="auth-form">
@@ -107,7 +107,7 @@ function Login() {
             <button
               className="auth-btn"
             >
-              Login
+              Sign in
             </button>
 
           </form>
