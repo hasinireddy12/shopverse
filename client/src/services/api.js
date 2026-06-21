@@ -1,6 +1,22 @@
 import axios from "axios";
 
-const baseURL = import.meta.env.VITE_API_URL || "http://localhost:8000/api";
+// Resolve API base URL:
+// 1. Use VITE_API_URL when provided (preferred)
+// 2. In production (non-localhost) fall back to same-origin `/api`
+// 3. Otherwise use local dev server
+let baseURL = import.meta.env.VITE_API_URL || "";
+try {
+  if (!baseURL) {
+    const host = typeof window !== 'undefined' && window.location && window.location.hostname;
+    if (host && host !== 'localhost' && host !== '127.0.0.1') {
+      baseURL = `${window.location.origin}/api`;
+    } else {
+      baseURL = "http://localhost:8000/api";
+    }
+  }
+} catch (e) {
+  baseURL = import.meta.env.VITE_API_URL || "http://localhost:8000/api";
+}
 
 const api = axios.create({
   baseURL,
