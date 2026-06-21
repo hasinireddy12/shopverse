@@ -10,10 +10,11 @@
 }
 
 .brand-logo {
-  color: transparent !important;
-  background: linear-gradient(135deg, var(--accent-3), var(--accent));
-  -webkit-background-clip: text;
-  background-clip: text;
+  /* Use a solid dark color so the brand is visible on light backgrounds */
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  color: var(--text-h, #10131a) !important;
   font-size: 1.6rem;
   font-weight: 900;
   letter-spacing: 0.02em;
