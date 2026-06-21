@@ -3,11 +3,39 @@
   display: grid;
   place-items: center;
   padding: 44px 20px 60px;
+  position: relative;
+  overflow: hidden;
 }
 
 .auth-shell {
   width: min(100%, 1120px);
   align-items: stretch;
+  position: relative;
+  z-index: 1;
+}
+
+/* Decorative transparent shopping images in the background */
+.auth-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-position: 6% 10%, 92% 78%;
+  background-size: 360px 360px, 300px 300px;
+  /* two simple white SVGs encoded as data URIs */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M16 20h32v32a4 4 0 0 1-4 4H20a4 4 0 0 1-4-4V20z' fill='%23ffffff' opacity='0.95'/><path d='M24 20V14a8 8 0 0 1 16 0v6' stroke='%23ffffff' stroke-width='3' fill='none' stroke-linecap='round'/></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M10 12h6l8 32h26' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='30' cy='52' r='3' fill='%23ffffff'/><circle cx='48' cy='52' r='3' fill='%23ffffff'/></svg>");
+  opacity: 0.08;
+  filter: blur(2px) saturate(120%);
+}
+
+@media (max-width: 700px) {
+  .auth-page::before {
+    background-size: 180px 180px, 140px 140px;
+    background-position: 10% 6%, 92% 86%;
+    opacity: 0.05;
+  }
 }
 
 .auth-visual {

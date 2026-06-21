@@ -97,12 +97,7 @@ const getOrderById = async (req, res) => {
   }
 };
 
-module.exports = {
-  placeOrder,
-  getMyOrders,
-  getOrderById,
-  getAllOrders
-};
+// Export handlers (moved below so all functions are defined first)
 
 // Get All Orders (admin)
 const getAllOrders = async (req, res) => {
@@ -118,4 +113,11 @@ const getAllOrders = async (req, res) => {
       message: error.message
     });
   }
+};
+
+module.exports = {
+  placeOrder,
+  getMyOrders,
+  getOrderById,
+  getAllOrders
 };
