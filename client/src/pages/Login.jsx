@@ -28,19 +28,23 @@ function Login() {
 
     try {
 
-      const res =
-      await api.post(
+      console.log('Sending login request', { email });
+
+      const res = await api.post(
         "/users/login",
-        {
-          email,
-          password
-        }
+        { email, password }
       );
 
-      // update auth context and localStorage
-      login(res.data);
+      console.log('Login response', res);
 
-      if (res.data.role === "admin") {
+      // Normalize response shape: support { user } or direct user object
+      const userData = res?.data?.user || res?.data || {};
+
+      // update auth context and localStorage
+      login(userData);
+
+      // Redirect based on role if present, otherwise go to products
+      if (userData.role === "admin") {
         navigate("/admin");
       } else {
         navigate("/products");
@@ -51,11 +55,15 @@ function Login() {
     } catch (error) {
 
       console.error('Login failed', error);
-      alert("Login Failed");
+      const msg = error?.response?.data?.message || error?.message || 'Login failed';
+      alert(msg);
+
+    } finally {
+
+      setLoading(false);
+      setTimeout(()=> setFlash(false), 1200);
 
     }
-    setLoading(false);
-    setTimeout(()=> setFlash(false), 1200);
   };
 
   return (

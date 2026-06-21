@@ -3,7 +3,8 @@ import axios from "axios";
 const baseURL = import.meta.env.VITE_API_URL || "http://localhost:8000/api";
 
 const api = axios.create({
-  baseURL
+  baseURL,
+  timeout: 10000 // 10s timeout to avoid hanging requests
 });
 
 // Attach Authorization header if user token exists in localStorage
