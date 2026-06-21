@@ -17,6 +17,8 @@ function Login() {
 
     e.preventDefault();
 
+    console.log('Login form submitted', { email, password });
+
     try {
 
       const res =
@@ -43,6 +45,7 @@ function Login() {
 
     } catch {
 
+      console.error('Login failed');
       alert("Login Failed");
 
     }
@@ -90,21 +93,20 @@ function Login() {
               type="email"
               placeholder="Email"
               className="form-control"
-              onChange={(e)=>
-                setEmail(e.target.value)
-              }
+              value={email}
+              onChange={(e)=> setEmail(e.target.value)}
             />
 
             <input
               type="password"
               placeholder="Password"
               className="form-control"
-              onChange={(e)=>
-                setPassword(e.target.value)
-              }
+              value={password}
+              onChange={(e)=> setPassword(e.target.value)}
             />
 
             <button
+              type="submit"
               className="auth-btn"
             >
               Sign in
