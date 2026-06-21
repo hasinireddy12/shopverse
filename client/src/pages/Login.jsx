@@ -13,11 +13,25 @@ function Login() {
   const [password,setPassword] =
   useState("");
 
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (e) => {
 
     e.preventDefault();
 
     console.log('Login form submitted', { email, password });
+    setLoading(true);
+    // temporary visible feedback for debugging
+    const flash = document.createElement('div');
+    flash.textContent = 'Submitting...';
+    flash.style.position = 'fixed';
+    flash.style.top = '12px';
+    flash.style.right = '12px';
+    flash.style.padding = '8px 12px';
+    flash.style.background = '#111';
+    flash.style.color = '#fff';
+    flash.style.zIndex = 9999;
+    document.body.appendChild(flash);
 
     try {
 
@@ -49,6 +63,8 @@ function Login() {
       alert("Login Failed");
 
     }
+    setLoading(false);
+    setTimeout(()=> flash.remove(), 1200);
   };
 
   return (
@@ -108,8 +124,9 @@ function Login() {
             <button
               type="submit"
               className="auth-btn"
+              disabled={loading}
             >
-              Sign in
+              {loading ? 'Signing in...' : 'Sign in'}
             </button>
 
           </form>
