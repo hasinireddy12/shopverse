@@ -28,12 +28,22 @@
   z-index: 0;
   pointer-events: none;
   background-repeat: no-repeat;
-  /* left-top shopping bag, right-bottom shopping cart */
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M48 20H16l2 30a4 4 0 0 0 4 4h20a4 4 0 0 0 4-4l2-30z' fill='%23ffffff' opacity='0.95'/><path d='M22 20V14a6 6 0 0 1 12 0v6' stroke='%23ffffff' stroke-width='3' fill='none' stroke-linecap='round'/></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M10 18h6l8 30h22' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='30' cy='52' r='3' fill='%23ffffff'/><circle cx='50' cy='52' r='3' fill='%23ffffff'/></svg>");
-  background-position: 6% 6%, 92% 86%;
-  background-size: 380px 380px, 320px 320px;
+  /* decorative SVGs: bag, cart, gift, tag, box */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M48 20H16l2 30a4 4 0 0 0 4 4h20a4 4 0 0 0 4-4l2-30z' fill='%23ffffff' opacity='0.18'/><path d='M22 20V14a6 6 0 0 1 12 0v6' stroke='%23ffffff' stroke-width='3' stroke-opacity='0.18' fill='none' stroke-linecap='round'/></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M10 18h6l8 30h22' fill='none' stroke='%23ffffff' stroke-width='3' stroke-opacity='0.18' stroke-linecap='round' stroke-linejoin='round'/><circle cx='30' cy='52' r='3' fill='%23ffffff' opacity='0.18'/><circle cx='50' cy='52' r='3' fill='%23ffffff' opacity='0.18'/></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='10' y='18' width='44' height='28' rx='3' fill='%23ffffff' opacity='0.18'/><path d='M10 26h44' stroke='%23ffffff' stroke-width='2' stroke-opacity='0.18' fill='none'/><rect x='26' y='10' width='12' height='8' rx='2' fill='%23ffffff' opacity='0.18'/></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M54 18l-18 18-8-6L14 44V22l8-8h24z' fill='%23ffffff' opacity='0.18'/><circle cx='46' cy='22' r='2.5' fill='%23ffffff' opacity='0.18'/></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M12 20h40v24a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4V20z' fill='%23ffffff' opacity='0.18'/><path d='M20 20v-6h24v6' stroke='%23ffffff' stroke-width='2' stroke-opacity='0.18' fill='none'/></svg>");
+  background-position: 6% 6%, 92% 86%, 50% 12%, 14% 82%, 82% 20%;
+  background-size: 380px 380px, 320px 320px, 180px 180px, 140px 140px, 160px 160px;
   filter: blur(2px) saturate(110%);
   opacity: 0.07;
+}
+
+/* Subtle overlay between decorative images and content to improve contrast */
+.home-page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(rgba(4,8,15,0.02), rgba(4,8,15,0.04));
 }
 
 @media (max-width: 900px) {
@@ -49,7 +59,14 @@
 .hero-copy,
 .hero-visual {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+}
+
+/* strengthen hero text color for readability over the decorative layer */
+.hero-copy .eyebrow,
+.hero-title,
+.hero-copy p {
+  color: var(--text-h);
 }
 
 .hero-banner::after {
