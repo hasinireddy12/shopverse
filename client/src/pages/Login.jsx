@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../context/authContext";
 import api from "../services/api";
 import "../styles/Auth.css";
 
 function Login() {
 
   const navigate = useNavigate();
-
+  const { login } = useContext(AuthContext);
   const [email,setEmail] =
   useState("");
 
@@ -44,15 +46,13 @@ function Login() {
         }
       );
 
-      localStorage.setItem(
-        "user",
-        JSON.stringify(res.data)
-      );
+      // update auth context and localStorage
+      login(res.data);
 
       if (res.data.role === "admin") {
         navigate("/admin");
       } else {
-        navigate("/");
+        navigate("/products");
       }
 
       alert("Login Success");
