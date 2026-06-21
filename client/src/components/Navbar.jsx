@@ -39,9 +39,11 @@ function Navbar() {
             Home
           </Link>
 
-          <Link to="/products">
-            Products
-          </Link>
+          {user && (
+            <Link to="/products">
+              Products
+            </Link>
+          )}
 
           {
             user && (
