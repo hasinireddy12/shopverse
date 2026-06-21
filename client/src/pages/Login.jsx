@@ -48,9 +48,9 @@ function Login() {
 
       alert("Login Success");
 
-    } catch {
+    } catch (error) {
 
-      console.error('Login failed');
+      console.error('Login failed', error);
       alert("Login Failed");
 
     }
