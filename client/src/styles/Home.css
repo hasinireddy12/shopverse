@@ -1,5 +1,7 @@
 .home-page {
   padding-top: 18px;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-banner {
@@ -16,6 +18,38 @@
     linear-gradient(160deg, var(--surface), var(--surface-strong));
   overflow: hidden;
   box-shadow: var(--shadow);
+}
+
+/* Decorative transparent shopping images behind the homepage content */
+.home-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  /* left-top shopping bag, right-bottom shopping cart */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M48 20H16l2 30a4 4 0 0 0 4 4h20a4 4 0 0 0 4-4l2-30z' fill='%23ffffff' opacity='0.95'/><path d='M22 20V14a6 6 0 0 1 12 0v6' stroke='%23ffffff' stroke-width='3' fill='none' stroke-linecap='round'/></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M10 18h6l8 30h22' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='30' cy='52' r='3' fill='%23ffffff'/><circle cx='50' cy='52' r='3' fill='%23ffffff'/></svg>");
+  background-position: 6% 6%, 92% 86%;
+  background-size: 380px 380px, 320px 320px;
+  filter: blur(2px) saturate(110%);
+  opacity: 0.07;
+}
+
+@media (max-width: 900px) {
+  .home-page::before {
+    background-size: 220px 220px, 160px 160px;
+    background-position: 4% 6%, 92% 92%;
+    opacity: 0.05;
+  }
+}
+
+/* Ensure hero content is above the decorative layer */
+.hero-banner,
+.hero-copy,
+.hero-visual {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-banner::after {
