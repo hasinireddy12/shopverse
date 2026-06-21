@@ -20,7 +20,7 @@ try {
 
 const api = axios.create({
   baseURL,
-  timeout: 10000 // 10s timeout to avoid hanging requests
+  timeout: 30000 // 30s timeout to allow slower responses during debug
 });
 
 // Attach Authorization header if user token exists in localStorage
